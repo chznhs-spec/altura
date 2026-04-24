@@ -271,15 +271,17 @@ footer {
     }
 }
 
-/* === KARUSEL NASTAVENÍ === */
+/* === OPRAVENÝ RESPONZIVNÍ KARUSEL === */
 .carousel {
     position: relative;
     width: 100%;
-    height: 400px; /* Stejná výška jako původní hero-img */
+    /* Poměr stran 16:9 zajistí, že to nebude jen pruh */
+    aspect-ratio: 16 / 9; 
     overflow: hidden;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #1a202c; /* To je ta šedá, co vidíš, když se obrázek nenačte */
 }
 
 .carousel-inner {
@@ -294,8 +296,9 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
+    object-fit: cover; /* Obrázek vyplní celý prostor bez deformace */
     opacity: 0;
-    transition: opacity 0.8s ease-in-out; /* Plynulé prolnutí */
+    transition: opacity 0.8s ease-in-out;
     z-index: 1;
 }
 
@@ -304,34 +307,39 @@ footer {
     z-index: 2;
 }
 
-/* Tečky pod obrázkem */
+/* Tečky zůstávají podobné, jen je posuneme trochu výš */
 .carousel-dots {
     position: absolute;
-    bottom: 15px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
+    gap: 8px;
     z-index: 10;
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.3);
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.4);
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .dot.active {
-    background-color: #00d2ff; /* Azurová z tvého stylu */
-    box-shadow: 0 0 8px rgba(0, 210, 255, 0.8);
+    background-color: #00d2ff;
+    box-shadow: 0 0 8px #00d2ff;
 }
 
-/* Úprava pro mobil */
+/* === OPRAVA PRO MOBILY === */
 @media (max-width: 900px) {
+    .hero-image-col {
+        width: 100%; /* Zajistí, že sloupec s fotkou nezmizí */
+        margin-bottom: 20px;
+    }
+
     .carousel {
-        height: 250px;
+        /* Na mobilu může být poměr stran trochu vyšší, aby fotka byla větší */
+        aspect-ratio: 4 / 3; 
     }
 }
