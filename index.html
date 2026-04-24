@@ -28,7 +28,22 @@
     <main>
         <section class="container hero-section">
             <div class="hero-image-col">
-                <img src="uplnek.jpeg" alt="uplnek" class="hero-img">
+                <div class="hero-image-col">
+    <div class="carousel">
+        <div class="carousel-inner">
+            <img src="uplnek.jpeg" alt="Úplněk" class="hero-img active">
+            <img src="i5_test_22.4.2026_2.jpeg" alt="Test i5 2" class="hero-img">
+            <img src="i5_test_22.4.2026_1.jpeg" alt="Test i5 1" class="hero-img">
+            <img src="laborka.jpeg" alt="Laboratoř" class="hero-img">
+        </div>
+        <div class="carousel-dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+</div>
             </div>
             
             <div class="hero-text-col">
@@ -62,3 +77,48 @@
 
 </body>
 </html>
+
+<script>
+    // Počkáme, až se načte celý obsah stránky (DOM)
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.carousel-inner .hero-img');
+        const dots = document.querySelectorAll('.dot');
+        const slideInterval = 5000; // Čas v milisekundách (5 sekund)
+
+        // Funkce pro přepnutí na konkrétní slide
+        function showSlide(index) {
+            // Kontrola přetečení (kruhové otáčení)
+            if (index >= slides.length) currentIndex = 0;
+            else if (index < 0) currentIndex = slides.length - 1;
+            else currentIndex = index;
+
+            // Odstraníme 'active' ze všech prvků
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+
+            // Přidáme 'active' tomu správnému
+            slides[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        // Funkce pro automatický posun
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        // Spuštění časovače
+        let autoPlay = setInterval(nextSlide, slideInterval);
+
+        // Manuální ovládání tečkami (včetně resetu časovače)
+        window.currentSlide = function(index) {
+            showSlide(index);
+            // Resetujeme časovač, aby se to nepřeplo hned po kliknutí
+            clearInterval(autoPlay);
+            autoPlay = setInterval(nextSlide, slideInterval);
+        };
+
+        // Kontrola, zda obrázky existují, pro jistotu do konzole
+        console.log("Karusel inicializován, počet snímků: " + slides.length);
+    });
+</script>
