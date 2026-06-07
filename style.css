@@ -439,3 +439,258 @@ footer {
         font-size: 1.8rem;
     }
 }
+
+/* === SPECIFICKÉ ÚPRAVY PRO STRÁNKU I5 (SPACEX LOOK) === */
+
+/* 1. Spacex styl Hero Sekce (tmavá, celoobrazovková) */
+.i5-hero {
+    width: 100%;
+    min-height: 90vh; /* Pokryje většinu obrazovky pod sticky headerem */
+    background-color: #000; /* Tmavé pozadí */
+    /* Použití promo fotky jako pozadí - image_1.png (labeling shot) */
+    background-image: url('image_1.png');
+    background-size: cover;
+    background-position: right bottom; /* Umístíme raketu na fotce do pravého dolního rohu */
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center; /* Vertikálně vycentrované data */
+    padding-top: 80px; /* Kompenzace sticky headeru */
+    color: #fff; /* Všechna data v této sekci budou světlá */
+}
+
+/* Obal pro data - zachová standardní šířku containeru, ale uvnitř i5-hero */
+.hero-overlap {
+    display: flex;
+    justify-content: flex-start; /* Data floating left, jako SpaceX */
+    align-items: center;
+    height: 100%;
+}
+
+.hero-data-col {
+    max-width: 650px; /* Omezíme šířku, aby to nevypadalo blbě */
+    padding: 40px;
+    /* Jemný gradient za textem pro lepší čitelnost na světlé části fotky */
+    background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-data-col h1 {
+    font-size: 4rem; /* Velký nadpis */
+    margin-bottom: 30px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.hero-data-col .section-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #aaa; /* Jemně šedá */
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+/* SPEC TABULKA (mimicking SpaceX) */
+.specs-wrapper {
+    margin-top: 40px;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0; /* Vertikální prostor */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Jemná dělící čára */
+}
+
+/* Poslední řádek bez spodní linky */
+.spec-row:last-child {
+    border-bottom: none;
+}
+
+.spec-label {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-right: 20px;
+}
+
+.spec-value {
+    color: #fff;
+    font-weight: normal;
+}
+
+/* 2. Doplňkový text pod hero sekcí (standardní světlé pozadí) */
+.i5-details {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.i5-details h2 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.i5-details h3 {
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+/* Přidáme standardní rozestupy mezi hero-section bloky (v base CSS chybí) */
+.i5-details .hero-section + .hero-section {
+    margin-top: 80px;
+}
+
+/* Zpětná úprava: Původní base CSS má poloprůhledné bílé pozadí headeru.
+   Pro SpaceX styl na této stránce by bylo fajn ho ztmavit na startu,
+   ale base CSS to neumí. Zachováme bílý header, vypadá to jako
+   přechod ze stránky raket Altura do "SpaceX módu". Nicméně, aby byl header
+   čitelný, ujistíme se, že má z-index. Base ho má. Zůstaneme u toho. */
+
+/* === SPECIFICKÉ ÚPRAVY PRO STRÁNKU I5 (SPACEX LOOK, DVOUSLOUPCOVÝ HERO) === */
+
+/* Upravená Hero Sekce (tmavá, celoobrazovková) */
+.i5-hero {
+    width: 100%;
+    min-height: 90vh; /* Pokryje většinu obrazovky pod sticky headerem */
+    background-color: #000; /* Tmavé pozadí */
+    /* Použití promo fotky jako pozadí - image_1.png (labeling shot) */
+    background-image: url('image_1.png');
+    background-size: cover;
+    background-position: right bottom; /* Umístíme raketu na fotce do pravého dolního rohu */
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center; /* Vertikálně vycentrované data */
+    padding-top: 120px; /* Větší kompenzace sticky headeru pro dvousloupcový layout */
+    padding-bottom: 40px;
+    color: #fff; /* Všechna data v této sekci budou světlá */
+}
+
+/* Obal pro data - zachová standardní šířku containeru, ale uvnitř i5-hero */
+.hero-overlap {
+    display: flex;
+    justify-content: space-around; /* Data a fotka s mezerou mezi sebou */
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+/* Levý sloupec (Data + Specs) */
+.hero-data-col {
+    flex: 1; /* Zabere polovinu prostoru */
+    max-width: 650px; /* Omezíme šířku, aby to nevypadalo blbě */
+    padding: 40px;
+    /* Jemný gradient za textem pro lepší čitelnost na světlé části fotky */
+    background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-data-col h1 {
+    font-size: 4rem; /* Velký nadpis */
+    margin-bottom: 30px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.hero-data-col .section-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #aaa; /* Jemně šedá */
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+/* SPEC TABULKA (mimicking SpaceX) */
+.specs-wrapper {
+    margin-top: 40px;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0; /* Vertikální prostor */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Jemná dělící čára */
+}
+
+/* Poslední řádek bez spodní linky */
+.spec-row:last-child {
+    border-bottom: none;
+}
+
+.spec-label {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-right: 20px;
+}
+
+.spec-value {
+    color: #fff;
+    font-weight: normal;
+}
+
+/* Pravý sloupec (Nová foreground fotka i5promo.png) */
+.hero-right-image {
+    flex: 1; /* Zabere polovinu prostoru */
+    display: flex;
+    justify-content: center; /* Vycentruje fotku ve sloupci */
+    align-items: center;
+}
+
+.i5-fg-img {
+    max-width: 90%; /* Zabere max 90% šířky sloupce */
+    height: auto;
+    display: block;
+    /* Jemný stín, aby fotka nesplývala s pozadím */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+
+/* 2. Doplňkový text pod hero sekcí (standardní světlé pozadí) */
+.i5-details {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.i5-details h2 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.i5-details h3 {
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+/* Přidáme standardní rozestupy mezi hero-section bloky (v base CSS chybí) */
+.i5-details .hero-section + .hero-section {
+    margin-top: 80px;
+}
+
+/* Úprava responzivity pro dvousloupcový hero */
+@media (max-width: 1000px) {
+    .i5-hero {
+        min-height: auto;
+        padding-top: 120px;
+    }
+    
+    .hero-overlap {
+        flex-direction: column; /* Na mobilu pod sebou */
+        gap: 40px;
+    }
+    
+    .hero-data-col {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        border-left: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px;
+    }
+    
+    .i5-fg-img {
+        max-width: 70%;
+    }
+}
